@@ -12,6 +12,7 @@ document.querySelectorAll('.drum')[i].addEventListener('click',function() {
             // Switch Statement use for sounds play one by one button
 var buttonInnerHTML=this.innerHTML;  
 makeSound(buttonInnerHTML);
+buttonAnimation(buttonInnerHTML)
     
 });//for selecting any kind of text you need to write "querySelector after select tag then customize button"
 
@@ -22,6 +23,7 @@ makeSound(buttonInnerHTML);
 //2. Detectting keypress from keyboard
 document.addEventListener("keypress",function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
 })
 
 
@@ -71,7 +73,24 @@ function makeSound(key){
             // break;
      }  
 
-}                                              
+}  
+
+
+                                // buttons Animation
+
+
+ function buttonAnimation(currentKey){
+
+  var activeButton= document.querySelector('.' + currentKey);
+  activeButton.classList.add('pressed');
+
+  setTimeout(function(){
+
+   activeButton.classList.remove('pressed');
+
+  },100);
+
+ }                               
     // var audio=new Audio('sounds/tom-1.mp3');
     // audio.play();
 
